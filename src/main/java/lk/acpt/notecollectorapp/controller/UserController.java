@@ -14,8 +14,15 @@ public class UserController {
     @Autowired
     private UserDAO userDAO;
 
+    //save user
     @PostMapping(path = "/save")
     public User saveUser(@RequestBody RequestSaveUserDTO requestSaveUserDTO){
         return userDAO.addUser(requestSaveUserDTO);
+    }
+
+    //get user
+    @GetMapping(path = "/get-user")
+    public User getUser(@RequestBody RequestSaveUserDTO requestSaveUserDTO){
+        return userDAO.getUser(requestSaveUserDTO);
     }
 }

@@ -21,4 +21,8 @@ public class UserDAO {
         User user = modelMapper.map(requestSaveUserDTO, User.class);
         return userRepo.save(user);
     }
+
+    public User getUser(RequestSaveUserDTO requestSaveUserDTO) {
+        return userRepo.getUserByUserName(requestSaveUserDTO.getUserName());
+    }
 }
