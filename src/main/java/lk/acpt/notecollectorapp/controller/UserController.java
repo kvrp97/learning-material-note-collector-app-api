@@ -21,8 +21,8 @@ public class UserController {
     }
 
     //get user
-    @GetMapping(path = "/get-user")
-    public User getUser(@RequestBody RequestSaveUserDTO requestSaveUserDTO){
-        return userDAO.getUser(requestSaveUserDTO);
+    @GetMapping(path = "/get-user", params = "userName")
+    public User getUser(@RequestParam(value = "userName") String userName){
+        return userDAO.getUser(userName);
     }
 }

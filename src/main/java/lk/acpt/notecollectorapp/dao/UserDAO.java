@@ -22,7 +22,8 @@ public class UserDAO {
         return userRepo.save(user);
     }
 
-    public User getUser(RequestSaveUserDTO requestSaveUserDTO) {
-        return userRepo.getUserByUserName(requestSaveUserDTO.getUserName());
+
+    public User getUser(String userName) {
+        return userRepo.getUserByUserName(userName);
     }
 }
