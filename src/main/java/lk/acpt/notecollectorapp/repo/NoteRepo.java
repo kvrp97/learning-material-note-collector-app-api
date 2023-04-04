@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @EnableJpaRepositories
 @Repository
 public interface NoteRepo extends JpaRepository<Note,Integer> {
+
 }

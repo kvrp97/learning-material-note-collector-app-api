@@ -26,4 +26,13 @@ public class NoteDAO {
     public List<Note> getAllNotes() {
         return noteRepo.findAll();
     }
+
+    public boolean deleteNote(Integer id) {
+        if (noteRepo.existsById(id)){
+            noteRepo.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

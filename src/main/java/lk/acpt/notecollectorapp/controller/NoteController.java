@@ -25,4 +25,9 @@ public class NoteController {
     public List<Note> getAllNotes(){
         return noteDAO.getAllNotes();
     }
+
+    @DeleteMapping(path = "delete", params = "noteId")
+    public boolean deleteNote(@RequestParam(value = "noteId") Integer id){
+        return noteDAO.deleteNote(id);
+    }
 }
