@@ -1,6 +1,7 @@
 package lk.acpt.notecollectorapp.dao;
 
 import lk.acpt.notecollectorapp.dto.RequestSaveNoteDTO;
+import lk.acpt.notecollectorapp.dto.RequestUpdateNoteDTO;
 import lk.acpt.notecollectorapp.model.Note;
 import lk.acpt.notecollectorapp.repo.NoteRepo;
 import org.modelmapper.ModelMapper;
@@ -38,5 +39,17 @@ public class NoteDAO {
 
     public Note getNote(Integer id) {
         return noteRepo.getNoteById(id);
+    }
+
+    public boolean updateNote(RequestUpdateNoteDTO requestUpdateNoteDTO) {
+        if (noteRepo.existsById(requestUpdateNoteDTO.getId())) {
+            Note note = noteRepo.getNoteById(requestUpdateNoteDTO.getId());
+            note.setTitle(requestUpdateNoteDTO.getTitle());
+            note.setDescription(requestUpdateNoteDTO.getDescription());
+            noteRepo.save(note);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

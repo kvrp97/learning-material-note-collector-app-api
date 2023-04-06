@@ -2,6 +2,7 @@ package lk.acpt.notecollectorapp.controller;
 
 import lk.acpt.notecollectorapp.dao.NoteDAO;
 import lk.acpt.notecollectorapp.dto.RequestSaveNoteDTO;
+import lk.acpt.notecollectorapp.dto.RequestUpdateNoteDTO;
 import lk.acpt.notecollectorapp.model.Note;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,11 @@ public class NoteController {
     @GetMapping(path = "/get-all-notes")
     public List<Note> getAllNotes(){
         return noteDAO.getAllNotes();
+    }
+
+    @PutMapping(path = "update")
+    public boolean updateNote(@RequestBody RequestUpdateNoteDTO requestUpdateNoteDTO){
+        return noteDAO.updateNote(requestUpdateNoteDTO);
     }
 
     @DeleteMapping(path = "delete", params = "noteId")
