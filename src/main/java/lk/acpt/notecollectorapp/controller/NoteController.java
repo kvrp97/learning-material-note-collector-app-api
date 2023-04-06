@@ -21,6 +21,11 @@ public class NoteController {
         return noteDAO.addNote(requestSaveNoteDTO);
     }
 
+    @GetMapping(path = "get-by-id", params = "noteId")
+    public Note getNote(@RequestParam(value = "noteId") Integer id){
+        return noteDAO.getNote(id);
+    }
+
     @GetMapping(path = "/get-all-notes")
     public List<Note> getAllNotes(){
         return noteDAO.getAllNotes();

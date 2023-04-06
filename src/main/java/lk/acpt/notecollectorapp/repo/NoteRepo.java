@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NoteRepo extends JpaRepository<Note,Integer> {
 
+    Note getNoteById(Integer id);
 }

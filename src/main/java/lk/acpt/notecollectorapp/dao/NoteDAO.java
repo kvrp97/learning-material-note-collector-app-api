@@ -35,4 +35,8 @@ public class NoteDAO {
             return false;
         }
     }
+
+    public Note getNote(Integer id) {
+        return noteRepo.getNoteById(id);
+    }
 }
