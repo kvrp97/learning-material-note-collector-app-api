@@ -23,4 +23,7 @@ public class Note {
     @Column(name = "note_description")
     private String description;
 
+    @Column(name = "modified_date_time", length = 30, nullable = false)
+    private String dateTime;
+
 }

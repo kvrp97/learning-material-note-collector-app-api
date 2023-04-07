@@ -11,4 +11,5 @@ public class RequestUpdateNoteDTO {
     private Integer id;
     private String title;
     private String description;
+    private String dateTime;
 }
