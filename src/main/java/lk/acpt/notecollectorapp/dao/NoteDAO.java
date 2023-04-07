@@ -49,6 +49,7 @@ public class NoteDAO {
             Note note = noteRepo.getNoteById(requestUpdateNoteDTO.getId());
             note.setTitle(requestUpdateNoteDTO.getTitle());
             note.setDescription(requestUpdateNoteDTO.getDescription());
+            note.setDateTime(requestUpdateNoteDTO.getDateTime());
             noteRepo.save(note);
             return true;
         } else {
