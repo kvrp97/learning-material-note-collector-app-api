@@ -16,13 +16,14 @@ public class UserController {
 
     //save user
     @PostMapping(path = "/save")
-    public User saveUser(@RequestBody RequestSaveUserDTO requestSaveUserDTO){
+    public boolean saveUser(@RequestBody RequestSaveUserDTO requestSaveUserDTO){
         return userDAO.addUser(requestSaveUserDTO);
     }
 
     //get user
-    @GetMapping(path = "/get-user", params = "userName")
-    public User getUser(@RequestParam(value = "userName") String userName){
-        return userDAO.getUser(userName);
+    @GetMapping(path = "/get-user", params = "email")
+    public User getUser(@RequestParam(value = "email") String emailAddress){
+        return userDAO.getUser(emailAddress);
     }
+
 }

@@ -16,14 +16,18 @@ public class UserDAO {
     @Autowired
     private ModelMapper modelMapper;
 
-
-    public User addUser(RequestSaveUserDTO requestSaveUserDTO) {
-        User user = modelMapper.map(requestSaveUserDTO, User.class);
-        return userRepo.save(user);
+    public boolean addUser(RequestSaveUserDTO requestSaveUserDTO) {
+        if(!userRepo.existsByEmailAddress(requestSaveUserDTO.getEmailAddress())){
+            User user = modelMapper.map(requestSaveUserDTO, User.class);
+            userRepo.save(user);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-
-    public User getUser(String userName) {
-        return userRepo.getUserByUserName(userName);
+    public User getUser(String emailAddress) {
+        return userRepo.getUserByEmailAddress(emailAddress);
     }
+
 }
