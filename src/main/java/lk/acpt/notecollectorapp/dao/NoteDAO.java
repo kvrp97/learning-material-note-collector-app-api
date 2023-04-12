@@ -8,7 +8,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -26,9 +25,7 @@ public class NoteDAO {
     }
 
     public List<Note> getAllNotes() {
-        List<Note> list = noteRepo.findAll();
-        Collections.reverse(list);
-        return list;
+        return noteRepo.findAllByOrderByDateTimeDesc();
     }
 
     public boolean deleteNote(Integer id) {
