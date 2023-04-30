@@ -17,10 +17,10 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "note_title", length = 115)
+    @Column(name = "note_title", length = 110)
     private String title;
 
-    @Column(name = "note_description")
+    @Column(name = "note_description", length = 455)
     private String description;
 
     @Column(name = "modified_date_time", length = 30, nullable = false)
