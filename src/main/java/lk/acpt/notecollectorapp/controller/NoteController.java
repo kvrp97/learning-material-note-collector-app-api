@@ -1,8 +1,8 @@
 package lk.acpt.notecollectorapp.controller;
 
 import lk.acpt.notecollectorapp.dao.NoteDAO;
-import lk.acpt.notecollectorapp.dto.RequestSaveNoteDTO;
-import lk.acpt.notecollectorapp.dto.RequestUpdateNoteDTO;
+import lk.acpt.notecollectorapp.dto.request.RequestSaveNoteDTO;
+import lk.acpt.notecollectorapp.dto.request.RequestUpdateNoteDTO;
 import lk.acpt.notecollectorapp.model.Note;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,11 +1,16 @@
 package lk.acpt.notecollectorapp.dao;
 
-import lk.acpt.notecollectorapp.dto.RequestSaveUserDTO;
+import lk.acpt.notecollectorapp.dto.request.RequestLogUserDTO;
+import lk.acpt.notecollectorapp.dto.request.RequestSaveUserDTO;
 import lk.acpt.notecollectorapp.model.User;
 import lk.acpt.notecollectorapp.repo.UserRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UserDAO {
@@ -16,9 +21,9 @@ public class UserDAO {
     @Autowired
     private ModelMapper modelMapper;
 
-    public boolean addUser(RequestSaveUserDTO requestSaveUserDTO) {
-        if(!userRepo.existsByEmailAddress(requestSaveUserDTO.getEmailAddress())){
-            User user = modelMapper.map(requestSaveUserDTO, User.class);
+    public boolean addUser(RequestSaveUserDTO saveUserDTO) {
+        if(!userRepo.existsByEmailAddress(saveUserDTO.getEmailAddress())){
+            User user = modelMapper.map(saveUserDTO, User.class);
             userRepo.save(user);
             return true;
         } else {
@@ -26,8 +31,14 @@ public class UserDAO {
         }
     }
 
-    public User getUser(String emailAddress) {
-        return userRepo.getUserByEmailAddress(emailAddress);
+    public Map authenticateUser(RequestLogUserDTO logUserDTO) throws Exception {
+        Map<String, String> auth = new HashMap<>();
+        User user = userRepo.getUserByEmailAddress(logUserDTO.getEmailAddress()).orElseThrow(() -> new Exception("No user found"));
+        if (user.getPassword().equals(logUserDTO.getPassword())){
+            auth.put("user",user.getFirstName());
+        } else {
+            auth.put(null,null);
+        }
+        return auth;
     }
-
 }

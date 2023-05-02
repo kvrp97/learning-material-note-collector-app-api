@@ -1,7 +1,7 @@
 package lk.acpt.notecollectorapp.dao;
 
-import lk.acpt.notecollectorapp.dto.RequestSaveNoteDTO;
-import lk.acpt.notecollectorapp.dto.RequestUpdateNoteDTO;
+import lk.acpt.notecollectorapp.dto.request.RequestSaveNoteDTO;
+import lk.acpt.notecollectorapp.dto.request.RequestUpdateNoteDTO;
 import lk.acpt.notecollectorapp.model.Note;
 import lk.acpt.notecollectorapp.repo.NoteRepo;
 import org.modelmapper.ModelMapper;
