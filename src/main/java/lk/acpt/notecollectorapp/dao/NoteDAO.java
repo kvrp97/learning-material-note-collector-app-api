@@ -19,10 +19,10 @@ public class NoteDAO {
     @Autowired
     private ModelMapper modelMapper;
 
-    public Note addNote(RequestSaveNoteDTO requestSaveNoteDTO) {
-        Note note = modelMapper.map(requestSaveNoteDTO, Note.class);
-        return noteRepo.save(note);
-    }
+//    public Note addNote(RequestSaveNoteDTO requestSaveNoteDTO) {
+//        Note note = modelMapper.map(requestSaveNoteDTO, Note.class);
+//        return noteRepo.save(note);
+//    }
 
     public List<Note> getAllNotes() {
         return noteRepo.findAllByOrderByDateTimeDesc();
